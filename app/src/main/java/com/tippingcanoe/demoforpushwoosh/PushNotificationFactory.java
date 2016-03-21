@@ -6,9 +6,7 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
-import com.pushwoosh.internal.utils.NotificationPrefs;
 import com.pushwoosh.notification.AbsNotificationFactory;
 import com.pushwoosh.notification.PushData;
 
@@ -19,8 +17,6 @@ import org.json.JSONObject;
 public class PushNotificationFactory extends AbsNotificationFactory {
     @Override
     public Notification onGenerateNotification(PushData pushData) {
-        Log.v("Push", pushData.getExtras().getString("u") + " - " + pushData.getMessage() + " - " + NotificationPrefs.getMessageId(getContext()));
-
         //create notification builder
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getContext());
 
@@ -66,7 +62,7 @@ public class PushNotificationFactory extends AbsNotificationFactory {
         }
 
         //build the notification
-        final Notification notification = notificationBuilder.build();
+        Notification notification = notificationBuilder.build();
 
         //add sound
         addSound(notification, pushData.getSound());
