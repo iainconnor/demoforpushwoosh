@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Create and start push manager
         PushManager pushManager = PushManager.getInstance(this);
-        //pushManager.setNotificationFactory(new PushNotificationFactory());
+        pushManager.setNotificationFactory(new PushNotificationFactory());
         NotificationPrefs.setMultiMode(this, true);
 
         //Start push manager, this will count app open for Pushwoosh stats as well
